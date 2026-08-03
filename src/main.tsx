@@ -84,7 +84,7 @@ function App() {
           <div className="cards">
             <article><PaintBucket /><h3>Pinturas vinílicas</h3><p>Acabados interiores y exteriores con gran rendimiento.</p></article>
             <article><ShieldCheck /><h3>Selladores y adhesivos</h3><p>Preparación profesional para superficies firmes y duraderas.</p></article>
-            <article><Droplets /><h3>Impermeabilizantes</h3><p>Protección contra humedad y filtraciones.</p></article>
+            <article className="product-card impermeabilizante-card"><img src="/images/narek-impermeabilizante.webp" alt="Cubeta de impermeabilizante acrílico elastomérico NAREK" className="product-image" /><Droplets /><h3>Impermeabilizantes</h3><p>Protección contra humedad y filtraciones.</p></article>
             <article><PaintBucket /><h3>Esmaltes y primarios</h3><p>Protección y acabado para metal, madera y señalización.</p></article>
           </div>
         </section>
