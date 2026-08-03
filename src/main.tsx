@@ -9,9 +9,9 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | un
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 const slides = [
-  { image: '/images/narek-soluciones-carrusel.jpeg', alt: 'Soluciones NAREK para proteger, resanar, sellar y decorar' },
-  { image: '/images/narek-fabrica.jpg', alt: 'Fabricación de pinturas y recubrimientos NAREK' },
-  { image: '/images/narek-trafico.jpg', alt: 'Pintura de tráfico NAREK' },
+  { image: '/images/narek-trafico.webp', alt: 'Pintura para señalamiento de tráfico NAREK' },
+  { image: '/images/narek-soluciones.webp', alt: 'Soluciones NAREK para proteger, resanar, sellar y decorar' },
+  { image: '/images/narek-colores.webp', alt: 'Pinturas vinílicas NAREK y colores que transforman tus espacios' },
 ];
 
 function App() {
@@ -65,7 +65,7 @@ function App() {
       <main>
         <section id="inicio" className="hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           {slides.map((item, index) => (
-            <img key={item.image} src={item.image} alt={item.alt} className={index === slide ? 'hero-image active' : 'hero-image'} onError={(e) => { if (index > 0) e.currentTarget.style.display = 'none'; }} />
+            <img key={item.image} src={item.image} alt={item.alt} className={index === slide ? 'hero-image active' : 'hero-image'} />
           ))}
           <div className="hero-shade" />
           <div className="hero-copy">
