@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Droplets, Mail, MessageCircle, PaintBucket, ShieldCheck } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import './styles.css';
+import './overrides.css';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
