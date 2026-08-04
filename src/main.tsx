@@ -1,6 +1,6 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChevronLeft, ChevronRight, Droplets, Mail, MessageCircle, PaintBucket, ShieldCheck } from 'lucide-react';
+import { Droplets, Mail, MessageCircle, PaintBucket, ShieldCheck } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import './styles.css';
 
@@ -8,22 +8,8 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
-const slides = [
-  { image: '/images/narek-trafico.jpg', alt: 'Pintura para señalamiento de tráfico NAREK' },
-  { image: '/images/narek-soluciones.jpg', alt: 'Soluciones NAREK para proteger, resanar, sellar y decorar' },
-  { image: '/images/narek-colores.jpg', alt: 'Pinturas vinílicas NAREK y colores que transforman tus espacios' },
-];
-
 function App() {
-  const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [status, setStatus] = useState('');
-
-  useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => setSlide((s) => (s + 1) % slides.length), 3000);
-    return () => window.clearInterval(id);
-  }, [paused]);
 
   async function subscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -65,10 +51,8 @@ function App() {
       </header>
 
       <main>
-        <section id="inicio" className="hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-          {slides.map((item, index) => (
-            <img key={item.image} src={item.image} alt={item.alt} className={index === slide ? 'hero-image active' : 'hero-image'} />
-          ))}
+        <section id="inicio" className="hero single-hero">
+          <img src="/images/nare-colores.png" alt="Carta de colores NAREK y pintor profesional" className="hero-image active" />
           <div className="hero-shade" />
           <div className="hero-copy">
             <span className="eyebrow">Pinturas y recubrimientos profesionales</span>
@@ -76,9 +60,6 @@ function App() {
             <p>Soluciones para proteger, impermeabilizar, decorar y señalizar.</p>
             <div className="actions"><a className="button" href="#productos">Conocer productos</a><a className="button outline" href="#precios">Obtener precios</a></div>
           </div>
-          <button aria-label="Anterior" className="arrow left" onClick={() => setSlide((slide - 1 + slides.length) % slides.length)}><ChevronLeft /></button>
-          <button aria-label="Siguiente" className="arrow right" onClick={() => setSlide((slide + 1) % slides.length)}><ChevronRight /></button>
-          <div className="dots">{slides.map((_, index) => <button key={index} aria-label={`Ir a imagen ${index + 1}`} className={index === slide ? 'dot active' : 'dot'} onClick={() => setSlide(index)} />)}</div>
         </section>
 
         <section id="productos" className="section">
