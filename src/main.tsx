@@ -1,6 +1,6 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Droplets, Mail, MessageCircle, PaintBucket, ShieldCheck } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Droplets, Mail, MessageCircle, PaintBucket, ShieldCheck } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import './styles.css';
 import './overrides.css';
@@ -9,8 +9,21 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined;
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
+const slides = [
+  { image: '/images/nare-colores.png', alt: 'Carta de colores NAREK y pintor profesional' },
+  { image: '/images/narek-man.png', alt: 'Aplicación profesional de productos NAREK' },
+];
+
 function App() {
+  const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
   const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    if (paused || slides.length < 2) return;
+    const id = window.setInterval(() => setSlide((current) => (current + 1) % slides.length), 4000);
+    return () => window.clearInterval(id);
+  }, [paused]);
 
   async function subscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -52,8 +65,10 @@ function App() {
       </header>
 
       <main>
-        <section id="inicio" className="hero single-hero">
-          <img src="/images/nare-colores.png" alt="Carta de colores NAREK y pintor profesional" className="hero-image active" />
+        <section id="inicio" className="hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          {slides.map((item, index) => (
+            <img key={item.image} src={item.image} alt={item.alt} className={index === slide ? 'hero-image active' : 'hero-image'} />
+          ))}
           <div className="hero-shade" />
           <div className="hero-copy">
             <span className="eyebrow">Pinturas y recubrimientos profesionales</span>
@@ -61,13 +76,16 @@ function App() {
             <p>Soluciones para proteger, impermeabilizar, decorar y señalizar.</p>
             <div className="actions"><a className="button" href="#productos">Conocer productos</a><a className="button outline" href="#precios">Obtener precios</a></div>
           </div>
+          <button aria-label="Imagen anterior" className="arrow left" onClick={() => setSlide((slide - 1 + slides.length) % slides.length)}><ChevronLeft /></button>
+          <button aria-label="Imagen siguiente" className="arrow right" onClick={() => setSlide((slide + 1) % slides.length)}><ChevronRight /></button>
+          <div className="dots">{slides.map((_, index) => <button key={index} aria-label={`Ir a imagen ${index + 1}`} className={index === slide ? 'dot active' : 'dot'} onClick={() => setSlide(index)} />)}</div>
         </section>
 
         <section id="productos" className="section">
           <div className="section-heading"><span>Soluciones NAREK</span><h2>Una línea para cada necesidad</h2></div>
           <div className="cards">
             <article><PaintBucket /><h3>Pinturas vinílicas</h3><p>Acabados interiores y exteriores con gran rendimiento.</p></article>
-            <article><ShieldCheck /><h3>Selladores y adhesivos</h3><p>Preparación profesional para superficies firmes y duraderas.</p></article>
+            <article className="product-card"><img src="/images/Narek-selladores.png" alt="Selladores y adhesivos NAREK" className="product-image" /><ShieldCheck /><h3>Selladores y adhesivos</h3><p>Preparación profesional para superficies firmes y duraderas.</p></article>
             <article className="product-card impermeabilizante-card"><img src="/images/narek-impermeabilizante.png" alt="Cubeta de impermeabilizante acrílico elastomérico NAREK" className="product-image" /><Droplets /><h3>Impermeabilizantes</h3><p>Protección contra humedad y filtraciones.</p></article>
             <article><PaintBucket /><h3>Esmaltes y primarios</h3><p>Protección y acabado para metal, madera y señalización.</p></article>
           </div>
