@@ -9,9 +9,9 @@ const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | un
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 const slides = [
-  { image: '/images/narek-trafico.webp', alt: 'Pintura para señalamiento de tráfico NAREK' },
-  { image: '/images/narek-soluciones.webp', alt: 'Soluciones NAREK para proteger, resanar, sellar y decorar' },
-  { image: '/images/narek-colores.webp', alt: 'Pinturas vinílicas NAREK y colores que transforman tus espacios' },
+  { image: '/images/narek-trafico.jpg', alt: 'Pintura para señalamiento de tráfico NAREK' },
+  { image: '/images/narek-soluciones.jpg', alt: 'Soluciones NAREK para proteger, resanar, sellar y decorar' },
+  { image: '/images/narek-colores.jpg', alt: 'Pinturas vinílicas NAREK y colores que transforman tus espacios' },
 ];
 
 function App() {
@@ -84,7 +84,7 @@ function App() {
           <div className="cards">
             <article><PaintBucket /><h3>Pinturas vinílicas</h3><p>Acabados interiores y exteriores con gran rendimiento.</p></article>
             <article><ShieldCheck /><h3>Selladores y adhesivos</h3><p>Preparación profesional para superficies firmes y duraderas.</p></article>
-            <article className="product-card impermeabilizante-card"><img src="/images/narek-impermeabilizante.webp" alt="Cubeta de impermeabilizante acrílico elastomérico NAREK" className="product-image" /><Droplets /><h3>Impermeabilizantes</h3><p>Protección contra humedad y filtraciones.</p></article>
+            <article className="product-card impermeabilizante-card"><img src="/images/narek-impermeabilizante.png" alt="Cubeta de impermeabilizante acrílico elastomérico NAREK" className="product-image" /><Droplets /><h3>Impermeabilizantes</h3><p>Protección contra humedad y filtraciones.</p></article>
             <article><PaintBucket /><h3>Esmaltes y primarios</h3><p>Protección y acabado para metal, madera y señalización.</p></article>
           </div>
         </section>
