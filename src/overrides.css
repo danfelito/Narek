@@ -1,7 +1,9 @@
-.topbar{padding:8px 5vw;min-height:96px}
-.brand-logo{width:340px;max-width:36vw;height:82px;object-fit:contain;object-position:left center}
+.topbar{padding:8px 5vw;min-height:108px}
+.brand-logo{width:320px;max-width:40vw;height:90px;object-fit:contain;object-position:left center}
 .footer-logo{width:320px}
 .hero .hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}
 .single-hero .hero-image{object-fit:cover;object-position:center center}
-@media(max-width:960px){.topbar{min-height:84px}.brand-logo{width:280px;max-width:52vw;height:68px}.hero .hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}}
-@media(max-width:640px){.topbar{min-height:72px;padding:8px 14px}.brand-logo{width:220px;max-width:68vw;height:56px}.footer-logo{width:260px}.hero{height:58vh;min-height:500px}.hero .hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}.single-hero .hero-image{object-fit:cover;object-position:center center}}
+.cards .product-card:not(.impermeabilizante-card){padding:22px}
+.cards .product-card:not(.impermeabilizante-card) .product-image{width:100%;max-width:290px;height:260px;margin:0 auto 16px;object-fit:contain}
+@media(max-width:960px){.topbar{min-height:96px}.brand-logo{width:300px;max-width:58vw;height:80px}.hero .hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}.cards .product-card:not(.impermeabilizante-card) .product-image{max-width:320px;height:280px}}
+@media(max-width:640px){.topbar{min-height:88px;padding:8px 14px}.brand-logo{width:260px;max-width:76vw;height:72px}.footer-logo{width:260px}.hero{height:58vh;min-height:500px}.hero .hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}.single-hero .hero-image{object-fit:cover;object-position:center center}.cards .product-card:not(.impermeabilizante-card){padding:18px}.cards .product-card:not(.impermeabilizante-card) .product-image{max-width:100%;height:300px;margin-bottom:12px}}
