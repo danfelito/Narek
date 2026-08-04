@@ -57,7 +57,9 @@ function App() {
   return (
     <>
       <header className="topbar">
-        <a href="#inicio" className="brand"><span className="mark">N</span><span>NAREK<small>La solución profesional</small></span></a>
+        <a href="#inicio" className="brand logo-link" aria-label="NAREK, la solución profesional">
+          <img src="/images/narek-logo.png" alt="NAREK" className="brand-logo" />
+        </a>
         <nav><a href="#productos">Productos</a><a href="#promociones">Promociones</a><a href="#precios">Lista de precios</a><a href="#contacto">Contacto</a></nav>
         <a className="button small" href="#precios">Suscribirme</a>
       </header>
@@ -110,7 +112,7 @@ function App() {
       </main>
 
       <footer id="contacto">
-        <div className="brand footer-brand"><span className="mark">N</span><span>NAREK<small>La solución profesional</small></span></div>
+        <div className="footer-logo-wrap"><img src="/images/narek-logo.png" alt="NAREK" className="footer-logo" /></div>
         <div><strong>Contacto</strong><a href="tel:+522292412530">229 241 2530</a><a href="mailto:asesoriahga@hotmail.com"><Mail size={16}/> asesoriahga@hotmail.com</a></div>
         <div><strong>Ubicación</strong><p>Av. Arrayanes, lote 7-A, manzana II<br/>Zona Ciudad Industrial Bruno Pagliai</p></div>
       </footer>
